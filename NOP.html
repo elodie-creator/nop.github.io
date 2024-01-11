@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Désherbeur </title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+</head>
+
+<body x-data="setupTabs()">
+    <div class="container">
+        <div id="app">
+            <div style="display:flex; padding:20px 0; align-items: center;">
+                <img src="img/robot.png" style="width: 75px;" alt="">
+                <h1 class="title"> Mr. Désherbeur</h1>
+            </div>
+            <div>
+                <!-- Main menu containing the basic button to navigate in the app -->
+                <div x-show="page === 'home'" class="btn-container">
+                    <button x-on:click="page = 'informations'" class="btn">Informations de base</button>
+                    <button x-on:click="page = 'settings'" class="btn">Paramètres de désherbage</button>
+                    <button x-on:click="page = 'manual_control'" class="btn">Contrôle manuel</button>
+                    <button x-on:click="page = 'sensors'" class="btn">Statut des capteurs</button>
+                </div>
+
+                <!-- Page containing the basic informations about the robot -->
+                <div x-show="page === 'informations'" id="informations">
+                    <div class="menu">
+                        <button class="backbtn" x-on:click="page = 'home'" style="cursor: pointer;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <h2 class="title">Informations de base</h2>
+                    </div>
+
+                    <!-- Table containing the basic informations about the robot -->
+                    <div class="content">
+                        <table class="informations-table" style="margin-bottom: 20px;">
+                            <tbody>
+                                <tr>
+                                    <td>État de fonctionnement</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Statut Robot</td>
+                                    <td><i class="fa-solid fa-skull"></i> Mort</td>
+                                </tr>
+                                <tr>
+                                    <td>Statut Caméra</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Statut Batterie</td>
+                                    <td><i class="fa-solid fa-battery-full"></i> 100% </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Page containing the settings of the robot -->
+                <div x-show="page === 'settings'" id="settings">
+                    <div class="menu">
+                        <button class="backbtn" x-on:click="page = 'home'" style="cursor: pointer;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <h2 class="title">Paramètres de déserbage</h2>
+                    </div>
+                    <div class="content">
+                        
+                        <table class="Jardin-table" style="margin-bottom: 20px;">
+                            <tbody>
+                                <tr>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button> </td>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                    <td><button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button> </td>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                    <td><button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button> </td>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                    <td><button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button> </td>
+                                    <td> <button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                    <td><button x-on:click="page = 'planche'" class="btn"> Jardin 1</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+
+                </div>
+
+                <!-- Page containing the basic informations about the robot -->
+                 <div x-show="page === 'planche'" id="planche">
+                    <div class="menu">
+                        <button class="backbtn" x-on:click="page = 'home'" style="cursor: pointer;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <h2 class="title">Sélection des planches</h2>
+                    </div>
+
+                    <!-- Table containing the basic informations about the robot -->
+                    <div class="content">
+                        
+                        <table class="Jardin-table" >
+                            <tbody >
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche1" name="Planche1"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 1</h3>   
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche2" name="Planche2"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 2</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche3" name="Planche3"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 3</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche4" name="Planche4"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 4</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche5" name="Planche5"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 5</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche6" name="Planche6"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 6</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche7" name="Planche7"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 7</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche8" name="Planche8"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 8</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche9" name="Planche9"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 9</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche10" name="Planche10"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 10</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche11" name="Planche11"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 11</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche12" name="Planche12"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 12</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche13" name="Planche13"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 13</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche14" name="Planche14"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 14</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche15" name="Planche15"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 15</h3>   
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                       <input type="checkbox" id="planche16" name="Planche16"> 
+                                    </td>
+                                    <td>
+                                        <h3>Planche 16</h3>   
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> 
+                
+
+
+
+
+                <!-- Page containing the manual control of the robot -->
+                <div x-show="page === 'manual_control'" id="manual_control">
+                    <div class="menu">
+                        <button class="backbtn" x-on:click="page = 'home'" style="cursor: pointer;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <h2 class="title">Contrôle Manuel</h2>
+                    </div>
+
+                    <div style="display: flex; justify-content: center;">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <!--Square of controls-->
+                    <div class="control-pad">
+                        <div>
+                            <div></div>
+                            <div class="controls"><i class="fa-solid fa-caret-up"></i></div>
+                            <div></div>
+                        </div>
+
+                        <div>
+                            <div class="controls"><i class="fa-solid fa-caret-left"></i></div>
+                            <div></div>
+                            <div class="controls"><i class="fa-solid fa-caret-right"></i></div>
+                        </div>
+
+                        <div>
+                            <div></div>
+                            <div class="controls"><i class="fa-solid fa-caret-down"></i></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page containing the sensors status of the robot -->
+                <div x-show="page === 'sensors'" id="sensors">
+                    <div class="menu">
+                        <button class="backbtn" x-on:click="page = 'home'" style="cursor: pointer;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <h2 class="title">Statut des capteurs</h2>
+                    </div>
+
+
+                    <div class="content">
+                        <table class="informations-table" style="margin-bottom: 20px;">
+                            <thead>
+                                <tr>
+                                    <th>Sensor name</th>
+                                    <th>Sensor value</th>
+                                    <th>Sensor status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sensor 1</td>
+                                    <td>0.02V</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 2</td>
+                                    <td>0.00V</td>
+                                    <td class="danger-status"><i class="fa-regular fa-circle-xmark"></i> ERROR</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 3</td>
+                                    <td>0.0C</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 4</td>
+                                    <td>33%</td>
+                                    <td class="warning-status"><i class="fa-solid fa-triangle-exclamation"></i> WARNING</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 5</td>
+                                    <td>33%</td>
+                                    <td class="warning-status"><i class="fa-solid fa-triangle-exclamation"></i> WARNING</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 6</td>
+                                    <td>130W</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 7</td>
+                                    <td>420K</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor 8</td>
+                                    <td>100%</td>
+                                    <td class="ok-status"><i class="fa-solid fa-check"></i> OK</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container" style="margin-top:30px;">
+                <button class="btn btn-danger" style="display:flex; justify-content: center; gap:15px;">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>ARRÊT D'URGENCE</span>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
